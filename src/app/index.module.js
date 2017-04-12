@@ -1,10 +1,11 @@
 (function (angular) {
     angular.module('fanco', [
-        'angularMoment',
-        'ionic',
-        'ngCordova',
-        'ngStorage'
-    ])
+            'angularMoment',
+            'ionic',
+            'ngCordova',
+            'ngStorage',
+            'fanco.sideMenu'
+        ])
         .run(function ($rootScope, $state, $ionicPlatform, $window) {
             $ionicPlatform.ready(function () {
                 if ($window.cordova && $window.cordova.plugins && $window.cordova.plugins.Keyboard) {
