@@ -1,4 +1,9 @@
 {
+    "fancoAPI": {
+        "HOST": "https://fanco-server.herokuapp.com/admin/",
+        "LOGIN": "login"
+    },
+
     "httpMethods": {
         "GET": "GET",
         "POST": "POST",

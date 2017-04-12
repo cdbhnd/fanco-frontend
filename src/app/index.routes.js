@@ -3,16 +3,22 @@
         .module('fanco')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $stateProvider
+                .state('login', {
+                    url: '/login',
+                    templateUrl: 'app/auth/auth.login.html',
+                    controller: 'authController',
+                    controllerAs: 'vm'
+                })
                 .state('app', {
                     url: '/app',
                     templateUrl: 'app/side-menu/side-menu.html',
                     controller: 'sideMenuController',
                     controllerAs: 'vm'
                 })
-                .state('app.hello', {
-                    url: '/hello',
-                    templateUrl: 'app/hello-world/hello-world.html'
+                .state('app.publish', {
+                    url: '/publish',
+                    templateUrl: 'app/publish/publish.html'
                 });
-            $urlRouterProvider.otherwise('/app/hello');
+            $urlRouterProvider.otherwise('/login');
         }]);
 })(window.angular);
