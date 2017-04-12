@@ -1,5 +1,5 @@
 (function (angular) {
-    angular.module('{{blueprint}}', [
+    angular.module('fanco', [
         'angularMoment',
         'ionic',
         'ngCordova',

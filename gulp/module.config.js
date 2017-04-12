@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('{{blueprint}}')
+        .module('fanco')
         .constant('config', /* @echo FOO */ );
 }());

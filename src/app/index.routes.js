@@ -1,6 +1,6 @@
 (function (angular) {
     angular
-        .module('{{blueprint}}')
+        .module('fanco')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $stateProvider
                 .state('hello', {
