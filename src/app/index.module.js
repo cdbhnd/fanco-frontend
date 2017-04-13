@@ -8,7 +8,8 @@
             'fanco.sideMenu',
             'fanco.auth',
             'fanco.api',
-            'fanco.notifications'
+            'fanco.notifications',
+            'fanco.bot'
         ])
         .run(function ($rootScope, $state, $ionicPlatform, $window, authService) {
             $ionicPlatform.ready(function () {

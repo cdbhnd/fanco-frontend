@@ -18,6 +18,12 @@
                 .state('app.publish', {
                     url: '/publish',
                     templateUrl: 'app/publish/publish.html'
+                })
+                .state('app.bots', {
+                    url: '/bots',
+                    templateUrl: 'app/bot/bot.list.html',
+                    controller: 'botListController',
+                    controllerAs: 'vm'
                 });
             $urlRouterProvider.otherwise('/login');
         }]);

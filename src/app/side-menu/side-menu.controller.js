@@ -7,7 +7,10 @@
     function sideMenuController($state, $ionicViewSwitcher, authService) {
         vm = this;
 
+        //public methods
         vm.logout = logoutUser;
+
+        //////////////////////////////////
 
         function logoutUser() {
             return authService.logout()

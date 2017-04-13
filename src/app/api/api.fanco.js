@@ -14,23 +14,16 @@
         function http(params) {
             params.url = config.fancoAPI.HOST + params.url;
 
-            if (!!$localStorage.currentUser && !!$localStorage.currentUser.accessToken) {
+            if (!!$localStorage.currentUser && !!$localStorage.currentUser.token) {
                 if (!params.headers) {
                     params.headers = {};
                 }
-                params.headers.Authorization = 'Bearer ' + $localStorage.currentUser.accessToken;
+                params.headers.Authorization = 'Bearer ' + $localStorage.currentUser.token;
             }
 
             return $http(params)
                 .then(function (response) {
                     return response.data;
-                })
-                .catch(function (e) {
-                    if (e.status === 401) {
-                        //logout current user
-                        //redirect him to login state
-                    }
-                    return $q.reject(e);
                 });
         }
     }
