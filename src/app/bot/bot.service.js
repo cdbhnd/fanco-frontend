@@ -27,7 +27,7 @@
                     return mapBots(response);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    return null;
                 });
         }
 
@@ -44,7 +44,6 @@
                     return true;
                 })
                 .catch(function (error) {
-                    console.log(error);
                     return false;
                 });
         }
