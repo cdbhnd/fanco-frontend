@@ -1,11 +1,11 @@
 <ion-view>
     <ion-content class="bots">
         <h1>Bots</h1>
-        <button ng-click="vm.toggleAddBotForm()">Toggle Bot From</button>
+        <button ng-click="vm.toggleAddBotForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 10px;font-size: 34px;"></button>
         <form ng-show="vm.showAddBotForm" ng-submit="vm.addBot(addBotForm.$valid, vm.bot.service, vm.bot.token)" name="addBotForm" novalidate>
-            <div class="title">
+            <!--<div class="title">
                 <h3>Add Bot</h3>
-            </div>
+            </div>-->
             <div class="list">
                 <select class="item item-input" ng-class="{'invalid': !addBotForm.tokenField.$valid && addBotForm.$submitted}" required name="serviceField" ng-model="vm.bot.service">
                     <option value="" selected>Choose service</option>
@@ -16,12 +16,12 @@
                 </label>
             </div>
             <div class="submit-button">
-                <button class="button button-block button-main action" type="submit">Add Bot</button>
+                <button class="button button-block button-positive action" type="submit">Add Bot</button>
             </div>
         </form>
-        <div class="title">
+        <!--<div class="title">
             <h3>Bots list</h3>
-        </div>
+        </div>-->
         <ion-list>
             <ion-item class="item" ng-repeat="bot in vm.bots">
                 <p>{{bot.service}}</p>
