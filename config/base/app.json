@@ -2,7 +2,8 @@
     "fancoAPI": {
         "HOST": "https://fanco-server.herokuapp.com/",
         "LOGIN": "admin/login",
-        "BOTS": "organizations/{{organizationId}}/bots"
+        "BOTS": "organization/{{organizationId}}/bots",
+        "EVENTS": "organization/{{organizationId}}/events"
     },
 
     "httpMethods": {
