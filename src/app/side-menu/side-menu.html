@@ -12,13 +12,19 @@
     </ion-side-menu-content>
     <ion-side-menu side="right">
         <ion-header-bar class="dark-bg expanded">
-            <span class="avatar" style="background: url('img/fanco.jpg'); background-size: cover;"></span>
+            <!--<span class="avatar" style="background: url('img/fanco.jpg'); background-size: cover;"></span>-->
             <h2>FanCo</h2>
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-                <ion-item nav-clear menu-close ui-sref="app.hello">
-                    Hello
+                <ion-item nav-clear menu-close ui-sref="app.publish">
+                    Publish
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.bots">
+                    Bots List
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="vm.logout()">
+                    Log out
                 </ion-item>
             </ion-list>
         </ion-content>

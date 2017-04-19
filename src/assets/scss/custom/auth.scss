@@ -1,0 +1,50 @@
+.log-in-page {
+    .scroll {
+        padding-top: 150px;
+        background: url('/images/background.jpg') 50% 20%;
+        background-size: cover;
+        height: 100%;
+        .log-in {
+            max-width: 700px;
+            display: block;
+            margin: auto;
+            form {  
+                .title {
+                    text-align: center;
+                    h1 {
+                        color: #f5f5f5;
+                    }
+                }
+                .item-input {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
+            }
+            .input-label {
+                color: #f5f5f5;
+            }
+            
+            .submit-button {
+                padding: 0 10px;
+            }
+        }
+    }
+}
+
+
+
+.bots {
+    select {
+        width: 100%;
+        background-color: white;
+        padding: 5px;
+        border: none;
+        padding: 12px;
+    }
+    .title {
+        text-align: center;
+    }
+    .invalid {
+        border: 1px solid red;
+    }
+}
