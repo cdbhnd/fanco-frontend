@@ -1,4 +1,19 @@
 .bots-page {
+    form {
+        background-color: #fff;
+        .invalid-input {
+            border-bottom: 1px solid #ff0000 !important;
+        }
+        .invalid-select {
+            color: #ff0000;
+        }
+    }
+    .list {
+        a {
+            background-color: #f8f8f8;
+            margin-bottom: 5px;
+        }
+    }
     .scroll {
         background: url('/images/chat-background.jpg') 50% 20%;
         background-size: contain;
