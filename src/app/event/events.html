@@ -3,10 +3,17 @@
         <strong class="title">Publish</strong>
     </div>
     <ion-content class="events-page">
-        <div class="list">
-            <div ng-repeat="event in vm.events | orderBy:'timestamp'" class="list card stable-bg">
-                <div class="item item-body">
-                    {{event.content}}
+        <div class="im-wrapper">
+            <div class="list text-center">
+                <div ng-repeat="event in vm.events | orderBy:'timestamp'" class="list card stable-bg">
+                    <div class="item item-body">
+                        <strong>
+                            {{event.postedBy}}
+                            <br>
+                            {{event.timestamp.format("DD/MM/YYYY HH:mm[h]")}}
+                        </strong>
+                        <p>{{event.content}}</p>
+                    </div>
                 </div>
             </div>
         </div>
