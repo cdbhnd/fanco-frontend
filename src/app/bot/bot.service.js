@@ -37,7 +37,9 @@
                     url: config.fancoAPI.BOTS.replace('{{organizationId}}', user.organizationId),
                     data: {
                         service: bot.service,
-                        token: bot.token
+                        token: bot.token,
+                        name: bot.name,
+                        avatar: bot.avatar
                     }
                 })
                 .then(function () {
