@@ -1,0 +1,14 @@
+@mixin mixin-placeholder($padding-left) {
+    &::-webkit-input-placeholder {
+        padding-left: $padding-left;
+    }
+    &::-moz-placeholder {
+        padding-left: $padding-left;
+    }
+    &:-ms-input-placeholder {
+        padding-left: $padding-left;
+    }
+    &:-moz-placeholder {
+        padding-left: $padding-left;
+    }
+}
