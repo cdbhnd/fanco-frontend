@@ -17,7 +17,9 @@
                 })
                 .state('app.publish', {
                     url: '/publish',
-                    templateUrl: 'app/publish/publish.html'
+                    templateUrl: 'app/event/events.html',
+                    controller: 'eventController',
+                    controllerAs: 'vm'
                 })
                 .state('app.bots', {
                     url: '/bots',

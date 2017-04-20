@@ -6,6 +6,7 @@
     "angular": "^1.6.0",
     "angular-moment": "^1.0.1",
     "bitballoon": "^0.2.2",
+    "fs": "0.0.1-security",
     "gulp": "~3.9.0",
     "gulp-angular-filesort": "~1.1.1",
     "gulp-angular-templatecache": "~1.8.0",
@@ -40,7 +41,7 @@
     "moment": "^2.17.1",
     "ng-cordova": "^0.1.27-alpha",
     "ngstorage": "^0.3.11",
-    "q": "^1.4.1",
+    "q": "^1.5.0",
     "stompjs": "^2.3.3",
     "yargs": "^7.0.2"
   },

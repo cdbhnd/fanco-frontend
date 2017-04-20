@@ -1,0 +1,22 @@
+.events-page {
+    .scroll {
+        padding-bottom: 120px;
+        padding-top: 40px;
+    }
+    background: url('/images/chat-background.jpg') 50% 20%;
+    background-size: contain;
+    height: 100%;
+}
+
+.event-input {
+    padding: 5px;
+    width: 240px;
+    input {
+        border-radius: 5px;
+        width: 100%
+    }
+}
+
+.ion-paper-airplane {
+    font-size: 25px !important;
+}
