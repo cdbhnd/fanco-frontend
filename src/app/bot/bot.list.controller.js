@@ -42,6 +42,7 @@
 
         function toggleAddBotForm() {
             vm.showAddBotForm = !vm.showAddBotForm;
+            clearFormFields();
         }
 
         function getAllBots() {
@@ -58,6 +59,13 @@
             return $q.when(function () {
                 notificationsService.notify(msg, type);
             }());
+        }
+
+        function clearFormFields() {
+            vm.bot.token = "";
+            vm.bot.name = "";
+            vm.bot.avatar = "";
+            vm.bot.service = "";
         }
     }
 })(window.angular);

@@ -35,8 +35,9 @@
         <div class="im-wrapper">
             <div class="list">
                 <a class="item item-avatar" ng-repeat="bot in vm.bots">
-                    <img src="images/{{bot.service.toLowerCase()}}.png">
-                    <h2>{{bot.service}}</h2>
+                    <img src="{{bot.avatar}}">
+                    <h2>Service: {{bot.service}}</h2>
+                    <h2>Bot name: {{bot.name}}</h2>
                     <p>{{bot.token}}</p>
                 </a>
             </div>
