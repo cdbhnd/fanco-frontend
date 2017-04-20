@@ -4,12 +4,14 @@
         .controller('eventController', eventController);
 
     /**@ngInject */
-    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel) {
+    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel, $filter) {
         vm = this;
 
         //variables and properties
         var user = $localStorage.currentUser;
-        vm.events = [];
+        vm.newestEvents = [];
+        vm.allEvents = [];
+        vm.showAllEvents = false;
         vm.newEvent = {
             type: 'message',
             content: ''
@@ -17,6 +19,7 @@
 
         //public method
         vm.sendNewEvent = sendNewEvent;
+        vm.toggleAllEvents = toggleAllEvents;
 
         //////////////////////////////////
         /**Activate */
@@ -29,7 +32,14 @@
 
         //////////////////////////////////
 
+        function toggleAllEvents() {
+            vm.showAllEvents = !vm.showAllEvents;
+        }
+
         function sendNewEvent(message) {
+            if (!message.content) {
+                return;
+            }
             return eventService.sendEvent(user, message)
                 .then(function (response) {
                     if (response) {
@@ -49,8 +59,15 @@
                 .then(function (response) {
                     if (!response) {
                         return;
+                    } else {
+                        response = $filter('orderBy')(response, 'timestamp', false);
+                        if (response.length > 20) {
+                            vm.newestEvents = response.slice((response.length - 20), response.length);
+                            vm.allEvents = response;
+                        } else {
+                            vm.allEvents = response;
+                        }
                     }
-                    vm.events = response;
                 });
         }
     }
