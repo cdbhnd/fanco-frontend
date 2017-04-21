@@ -39,6 +39,7 @@
                                 notify('Something went wrong', 'error');
                             } else {
                                 notify('Bot created', 'success')
+                                    .then(toggleAddScheduleForm)
                                     .then(getAllSchedules);
                             }
                         });

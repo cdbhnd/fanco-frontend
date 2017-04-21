@@ -35,6 +35,7 @@
                         notify('Something went wrong', 'error');
                     } else {
                         notify('Bot created', 'success')
+                            .then(toggleAddBotForm)
                             .then(getAllBots);
                     }
                 });
