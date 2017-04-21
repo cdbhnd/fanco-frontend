@@ -8,7 +8,7 @@
         function scheduleModel(data) {
             this.timestamp = (data && data.timestamp) ? moment(data.timestamp) : '';
             this.description = (data && data.description) ? data.description : '';
-            this.alarm = (data && data.alarm) ? data.alarm : '';
+            this.alarm = (data && data.alarm) ? data.alarm : false;
         }
         return scheduleModel;
     }

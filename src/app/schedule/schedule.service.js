@@ -33,11 +33,7 @@
             return fancoApi.http({
                     method: config.httpMethods.POST,
                     url: config.fancoAPI.SCHEDULES.replace('{{organizationId}}', user.organizationId),
-                    data: {
-                        timestamp: schedule.timestamp,
-                        description: schedule.description,
-                        alarm: schedule.alarm || false
-                    }
+                    data: schedule
                 })
                 .then(function () {
                     return true;

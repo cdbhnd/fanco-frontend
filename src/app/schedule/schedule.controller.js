@@ -21,6 +21,7 @@
         //////////////////////////////////
         /**Activate */
         (function () {
+            console.log(vm.newSchedule);
             getAllSchedules();
         })();
 
@@ -82,19 +83,15 @@
                 vm.newSchedule = {
                     timestamp: '',
                     description: '',
-                    alarm: ''
+                    alarm: false
                 };
             }());
         }
 
         function createTimestamp(raw) {
             return $q.when(function () {
-                vm.newSchedule.timestamp = raw.slice(0, 4) + '-' + raw.slice(4, 6) + '-' + raw.slice(6, 8) + 'T' + raw.slice(8, 10) + ':' + raw.slice(10, 12) + ':00Z';
+                vm.newSchedule.timestamp = raw.slice(4, 8) + '-' + raw.slice(2, 4) + '-' + raw.slice(0, 2) + 'T' + raw.slice(8, 10) + ':' + raw.slice(10, 12) + ':00Z';
             }());
         }
-
-        // function scrollBottom() {
-        //     return $ionicScrollDelegate.scrollBottom();
-        // }
     }
 })(window.angular);
