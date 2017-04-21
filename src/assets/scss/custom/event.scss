@@ -5,6 +5,12 @@
     p {
         font-size: 15px;
     }
+    form {
+        background-color: $form_background;
+        .invalid-input {
+            border-bottom: 1px solid #ff0000 !important;
+        }
+    }
     .scroll {
         padding-bottom: 120px;
         padding-top: 40px;
@@ -22,9 +28,11 @@
         }
     }
 }
+
 .not-sent {
     opacity: 0.5;
 }
+
 .stable-bg {
     background-color: #f8f8f8 !important;
     max-width: $max_card_width !important;

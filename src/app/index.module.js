@@ -1,6 +1,7 @@
 (function (angular) {
     angular.module('fanco', [
             'angularMoment',
+            'ui.mask',
             'ionMdInput',
             'ionic',
             'ngCordova',
@@ -10,7 +11,8 @@
             'fanco.api',
             'fanco.notifications',
             'fanco.bot',
-            'fanco.event'
+            'fanco.event',
+            'fanco.schedule'
         ])
         .run(function ($rootScope, $state, $ionicPlatform, $window, authService) {
             $ionicPlatform.ready(function () {
