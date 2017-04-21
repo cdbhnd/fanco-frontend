@@ -41,6 +41,13 @@
 
     var _ENV_CONFIG = config.environmentsConfig[_ENV];
 
+    var _THEME = 'default';
+    var _TITLE = 'FanCo';
+    if (argv.atletika) {
+        _THEME = 'atletika';
+        _TITLE = 'FK Atletika';
+    }
+
     // main gulp base task
     // do not change the execution order of the tasks!
     gulp.task('base', gulpsync.sync(['clean', 'config', 'data', 'templateCache', 'libraries', 'app', 'styles', 'fonts', 'icons', 'images', 'favicon', 'index']));
@@ -101,7 +108,17 @@
         return gulp.src([
                 config.paths.src + '/app/**/*.html'
             ])
-            .pipe(preprocess({ context: { ENV: _ENV, ENV_CONFIG: _ENV_CONFIG, DEBUG: (_ENV == config.environments.DEVELOPMENT) } }))
+            .pipe(preprocess({ 
+                context: { 
+                    ENV: _ENV, 
+                    ENV_CONFIG: _ENV_CONFIG, 
+                    DEBUG: (_ENV == config.environments.DEVELOPMENT), 
+                    THEME: {
+                        NAME: _THEME,
+                        TITLE: _TITLE
+                    } 
+                } 
+            }))
             .pipe(templateCache('templateCache.js', {
                 module: 'fanco',
                 root: 'app'
@@ -153,6 +170,7 @@
     gulp.task('styles', function() {
         return gulp.src([
                 config.paths.ionic + '/css/ionic.css',
+                config.paths.src + '/assets/scss/index-' + _THEME + '.scss',
                 config.paths.src + '/assets/scss/index.scss'
             ])
             .pipe(sass().on('error', sass.logError))

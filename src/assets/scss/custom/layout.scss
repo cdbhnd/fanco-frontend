@@ -2,7 +2,7 @@ body {
     font-family: 'Exo', sans-serif !important;
 
     .bar.bar-header {
-        background: url('/images/background.jpg') 50% 20%;
+        background: $header_background !important;
         h2 {
             display: block;
             margin: auto;
