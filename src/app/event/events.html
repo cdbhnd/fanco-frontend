@@ -5,12 +5,12 @@
     <ion-content class="events-page">
         <div class="im-wrapper">
             <div class="list text-center">
-                <button ng-click="vm.toggleAllEvents()" class="button button-positive">
-                    <p ng-show="!vm.showAllEvents">Load All</p>
-                    <p ng-show="vm.showAllEvents">Load Newest</p>                    
+                <button ng-click="vm.toggleAllEvents()" class="button button-positive" ng-show="!vm.showAllEvents && !!vm.allEvents.length">
+                    <p>Load All</p>
+                    <!--<p ng-show="vm.showAllEvents">Load Newest</p>-->                    
                 </button>
                 <div ng-if="vm.showAllEvents" ng-repeat="all in vm.allEvents" class="list card stable-bg">
-                    <div class="item item-body">
+                    <div class="item item-body" ng-class="{ 'not-sent': !all.sent }">
                         <strong>
                             {{all.postedBy}}
                             <br>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div ng-if="!vm.showAllEvents" ng-repeat="newest in vm.newestEvents" class="list card stable-bg">
-                    <div class="item item-body">
+                    <div class="item item-body" ng-class="{ 'not-sent': !newest.sent }">
                         <strong>
                             {{newest.postedBy}}
                             <br>

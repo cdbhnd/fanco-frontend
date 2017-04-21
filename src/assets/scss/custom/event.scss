@@ -22,10 +22,12 @@
         }
     }
 }
-
+.not-sent {
+    opacity: 0.5;
+}
 .stable-bg {
     background-color: #f8f8f8 !important;
-    max-width: 500px !important;
+    max-width: $max_card_width !important;
 }
 
 .bar-footer {

@@ -12,6 +12,7 @@
             this.token = (data && data.token) ? data.token : '';
             this.name = (data && data.name) ? data.name : '';
             this.avatar = (data && data.avatar) ? data.avatar : '';
+            this.subscribers = (data && data.subscribers) ? data.subscribers : [];
         }
         return botModel;
     }
