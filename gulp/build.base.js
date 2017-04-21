@@ -1,4 +1,4 @@
-(function(require) {
+(function (require) {
     'use strict';
 
     var argv = require('yargs').argv;
@@ -45,49 +45,49 @@
     // do not change the execution order of the tasks!
     gulp.task('base', gulpsync.sync(['clean', 'config', 'data', 'templateCache', 'libraries', 'app', 'styles', 'fonts', 'icons', 'images', 'favicon', 'index']));
 
-    gulp.task('config', function() {
+    gulp.task('config', function () {
         gulp.src([
                 config.paths.config + '/base/*.json',
                 config.paths.config + '/' + _ENV + '/*.json'
             ])
             .pipe(mergeJson('config.json'))
             .pipe(gulp.dest(config.paths.tmp + '/config'))
-            .pipe(mergeJson(config.paths.tmp + '/config/config.json', function(jsonData) {
+            .pipe(mergeJson(config.paths.tmp + '/config/config.json', function (jsonData) {
                 gulp.src(['gulp/module.config.js'])
                     .pipe(preprocess({ context: { FOO: JSON.stringify(jsonData).replace(/\'/g, '') } }))
                     .pipe(gulp.dest(config.paths.tmp + '/config/'));
             }));
     });
 
-    gulp.task('data', function() {
+    gulp.task('data', function () {
         gulp.src([
                 config.paths.src + '/data/**'
             ])
             .pipe(gulp.dest(config.paths.dist + '/data'));
     });
 
-    gulp.task('clean', function() {
+    gulp.task('clean', function () {
         return del.sync([
             config.paths.dist,
             config.paths.tmp
         ]);
     });
 
-    gulp.task('fonts', function() {
+    gulp.task('fonts', function () {
         return gulp.src([
                 config.paths.ionic + '/fonts/*.*'
             ])
             .pipe(gulp.dest(config.paths.dist + '/fonts'));
     });
 
-    gulp.task('icons', function() {
+    gulp.task('icons', function () {
         return gulp.src([
                 config.paths.src + '/assets/icons/*/*.*'
             ])
             .pipe(gulp.dest(config.paths.dist + '/icons'));
     });
 
-    gulp.task('index', function() {
+    gulp.task('index', function () {
         var _manifest = gulp.src('rev-manifest.json');
         return gulp.src([
                 config.paths.src + '/index.html'
@@ -97,7 +97,7 @@
             .pipe(gulp.dest(config.paths.dist));
     });
 
-    gulp.task('templateCache', function() {
+    gulp.task('templateCache', function () {
         return gulp.src([
                 config.paths.src + '/app/**/*.html'
             ])
@@ -109,7 +109,7 @@
             .pipe(gulp.dest(config.paths.tmp + '/templateCache/'));
     });
 
-    gulp.task('libraries', function() {
+    gulp.task('libraries', function () {
         return gulp.src([
                 config.paths.ionic + '/js/angular/angular.min.js',
                 config.paths.ionic + '/js/angular/angular-animate.min.js',
@@ -122,7 +122,8 @@
                 config.paths.node_modules + '/ng-cordova/dist/ng-cordova.min.js',
                 config.paths.node_modules + '/ngstorage/ngStorage.min.js',
                 config.paths.node_modules + '/moment/moment.js',
-                config.paths.node_modules + '/angular-moment/angular-moment.min.js'
+                config.paths.node_modules + '/angular-moment/angular-moment.min.js',
+                config.paths.node_modules + '/angular-ui-mask/dist/mask.min.js'
             ])
             .pipe(concatenate('libraries.js'))
             .pipe(rev())
@@ -131,7 +132,7 @@
             .pipe(gulp.dest(config.paths.src));
     });
 
-    gulp.task('app', function() {
+    gulp.task('app', function () {
         return gulp.src([
                 config.paths.src + '/app/index.module.js',
                 config.paths.src + '/app/**/*.module.js',
@@ -150,7 +151,7 @@
             .pipe(gulp.dest(config.paths.src));
     });
 
-    gulp.task('styles', function() {
+    gulp.task('styles', function () {
         return gulp.src([
                 config.paths.ionic + '/css/ionic.css',
                 config.paths.src + '/assets/scss/index.scss'
@@ -165,14 +166,14 @@
             .pipe(gulp.dest(config.paths.src));
     });
 
-    gulp.task('images', function() {
+    gulp.task('images', function () {
         gulp.src([
                 config.paths.src + '/assets/images/*'
             ])
             .pipe(gulp.dest(config.paths.dist + '/images'));
     });
 
-    gulp.task('favicon', function() {
+    gulp.task('favicon', function () {
         gulp.src([
                 config.paths.src + '/assets/favicon/*',
             ])

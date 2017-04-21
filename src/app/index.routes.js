@@ -35,7 +35,8 @@
                     url: '/schedule',
                     templateUrl: 'app/schedule/schedule.html',
                     controller: 'scheduleController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    cache: false
                 });
             $urlRouterProvider.otherwise('/login');
         }]);

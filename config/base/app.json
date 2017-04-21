@@ -3,7 +3,8 @@
         "HOST": "http://localhost:8080/",
         "LOGIN": "admin/login",
         "BOTS": "organization/{{organizationId}}/bots",
-        "EVENTS": "organization/{{organizationId}}/events"
+        "EVENTS": "organization/{{organizationId}}/events",
+        "SCHEDULES": "organization/{{organizationId}}/schedules"
     },
 
     "httpMethods": {
