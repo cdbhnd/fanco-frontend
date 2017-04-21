@@ -12,6 +12,7 @@
             this.content = (data && data.content) ? data.content : '';
             this.postedBy = (data && data.postedBy) ? data.postedBy : '';
             this.timestamp = (data && data.timestamp) ? moment(data.timestamp) : moment();
+            this.sent = (data && data.sent) ? data.sent : true;
         }
         return eventModel;
     }

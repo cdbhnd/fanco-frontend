@@ -1,5 +1,5 @@
-<ion-view>
-    <ion-content class="bots-page">
+<ion-view class="bots-page">
+    <ion-content>
         <div class="bar bar-subheader bar-stable static text-center">
             <strong class="title">Bots</strong>
         </div>
@@ -34,12 +34,12 @@
         </form>
         <div class="im-wrapper">
             <div class="list">
-                <a class="item item-avatar" ng-repeat="bot in vm.bots">
-                    <img src="{{bot.avatar}}">
-                    <h2>Service: {{bot.service}}</h2>
-                    <h2>Bot name: {{bot.name}}</h2>
-                    <h2>Number of users: {{bot.subscribers.length}}</h2>
+                <a class="item item-avatar bot-item" ng-repeat="bot in vm.bots">
+                    <img class="bot-avatar" ng-src="{{bot.avatar}}">
+                    <h2 style="text-transform: uppercase;">{{bot.name}}</h2>
+                    <h3>{{bot.service}}</h3>
                     <p>{{bot.token}}</p>
+                    <p>{{bot.subscribers.length}} follower(s)</p>
                 </a>
             </div>
     </ion-content>

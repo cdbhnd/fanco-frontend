@@ -4,7 +4,7 @@
         .controller('eventController', eventController);
 
     /**@ngInject */
-    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel, $filter) {
+    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel, $filter, moment) {
         vm = this;
 
         //variables and properties
@@ -40,33 +40,33 @@
             if (!message.content) {
                 return;
             }
-            return eventService.sendEvent(user, message)
-                .then(function (response) {
-                    if (response) {
-                        getAllEvents()
-                            .then(function () {
-                                $ionicScrollDelegate.scrollBottom();
-                            })
-                            .then(function () {
-                                vm.newEvent.content = '';
-                            });
-                    }
+            var eventModel = new EventModel({
+                type: 'message',
+                content: message.content,
+                postedBy: user.email,
+                timestamp: moment()
+            });
+            eventModel.sent = false;
+            vm.newestEvents.push(eventModel);
+            vm.allEvents.push(eventModel);
+            vm.newEvent.content = '';
+            $ionicScrollDelegate.scrollBottom();
+            return eventService.sendEvent(user, eventModel)
+                .then(getAllEvents)
+                .then(function() {
+                    $ionicScrollDelegate.scrollBottom();
                 });
         }
 
         function getAllEvents() {
             return eventService.getAllEvents(user)
                 .then(function (response) {
-                    if (!response) {
-                        return;
+                    response = $filter('orderBy')(response, 'timestamp', false);
+                    if (response.length > 20) {
+                        vm.newestEvents = response.slice((response.length - 20), response.length);
+                        vm.allEvents = response;
                     } else {
-                        response = $filter('orderBy')(response, 'timestamp', false);
-                        if (response.length > 20) {
-                            vm.newestEvents = response.slice((response.length - 20), response.length);
-                            vm.allEvents = response;
-                        } else {
-                            vm.allEvents = response;
-                        }
+                        vm.newestEvents = response;
                     }
                 });
         }
