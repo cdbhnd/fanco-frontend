@@ -4,8 +4,7 @@
             <strong class="title">Bots</strong>
         </div>
         <button ng-click="vm.toggleAddBotForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 10px;font-size: 34px;"></button>
-        <form ng-show="vm.showAddBotForm" ng-submit="vm.addBot(addBotForm.$valid, vm.bot.service, vm.bot.token)" name="addBotForm"
-            novalidate>
+        <form ng-show="vm.showAddBotForm" ng-submit="vm.addBot(addBotForm.$valid, vm.bot.service, vm.bot.token)" name="addBotForm" novalidate>
             <div class="im-wrapper">
                 <div class="list">
                     <label class="item item-input item-select">
@@ -35,7 +34,7 @@
         <div class="im-wrapper">
             <div class="list">
                 <a class="item item-avatar" ng-repeat="bot in vm.bots">
-                    <img src="{{bot.avatar}}">
+                    <img src="{{bot.avatar}}" alt-image="images/{{bot.service.toLowerCase()}}.png">
                     <h2>Service: {{bot.service}}</h2>
                     <h2>Bot name: {{bot.name}}</h2>
                     <p>{{bot.token}}</p>

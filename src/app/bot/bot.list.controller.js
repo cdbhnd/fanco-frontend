@@ -41,8 +41,14 @@
         }
 
         function toggleAddBotForm() {
-            vm.showAddBotForm = !vm.showAddBotForm;
-            clearFormFields();
+            switchFormFlag()
+                .then(clearFormFields);
+        }
+
+        function switchFormFlag() {
+            return $q.when(function () {
+                vm.showAddBotForm = !vm.showAddBotForm;
+            }());
         }
 
         function getAllBots() {
@@ -62,10 +68,14 @@
         }
 
         function clearFormFields() {
-            vm.bot.token = "";
-            vm.bot.name = "";
-            vm.bot.avatar = "";
-            vm.bot.service = "";
+            return $q.when(function () {
+                vm.bot = {
+                    token: '',
+                    name: '',
+                    avatar: '',
+                    service: ''
+                };
+            }());
         }
     }
 })(window.angular);
