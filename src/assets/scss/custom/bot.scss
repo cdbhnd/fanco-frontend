@@ -1,4 +1,7 @@
 .bots-page {
+    ion-content {
+        padding-top: 40px !important;
+    }
     form {
         background-color: #fff;
         .invalid-input {
@@ -14,7 +17,7 @@
             margin-bottom: 5px;
         }
         .item-avatar.bot-item {
-            box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
             max-width: $max_card_width;
             margin: auto;
             .bot-avatar {
