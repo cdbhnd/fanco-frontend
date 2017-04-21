@@ -30,6 +30,13 @@
                     controller: 'botListController',
                     controllerAs: 'vm',
                     cache: false
+                })
+                .state('app.schedule', {
+                    url: '/schedule',
+                    templateUrl: 'app/schedule/schedule.html',
+                    controller: 'scheduleController',
+                    controllerAs: 'vm',
+                    cache: false
                 });
             $urlRouterProvider.otherwise('/login');
         }]);

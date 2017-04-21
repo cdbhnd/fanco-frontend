@@ -1,0 +1,40 @@
+<ion-view>
+    <div class="bar bar-subheader bar-stable text-center">
+        <strong class="title">Schedule</strong>
+    </div>
+    <button ng-click="vm.toggleAddScheduleForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 50px;font-size: 34px;"></button>
+    <ion-content class="events-page">
+        <form ng-show="vm.showAddScheduleForm" ng-submit="vm.addSchedule(addScheduleForm.$valid)" name="addScheduleForm" novalidate>
+            <div class="im-wrapper">
+                <div class="list">
+                    <label class="item item-input item-floating-label" ng-class="{'invalid-input': !addScheduleForm.timestampField.$valid && addScheduleForm.$submitted}">
+                        <span class="input-label">Timestamp</span>
+                        <input ui-mask="99.99.9999 99:99" ui-mask-placeholder="DD.MM.YYYY hh:mm" placeholder="Timestamp" highlight-color="energized" type="text" required name="timestampField" ng-model="vm.rawTimestamp" autocomplete="off" autocapitalize="none"></input>
+                    </label>
+                    <label class="item item-input item-floating-label" ng-class="{'invalid-input': !addScheduleForm.descriptionField.$valid && addScheduleForm.$submitted}">
+                        <span class="input-label">Description</span>
+                        <input placeholder="Description" highlight-color="energized" type="text" required name="descriptionField" ng-model="vm.newSchedule.description" autocomplete="off" autocapitalize="none"></input>
+                    </label>
+                    <div class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="vm.newSchedule.alarm">
+                        </label> Notifications
+                    </div>
+                    <button class="button button-block button-calm ink" type="submit">Add Bot</button>
+                </div>
+            </div>
+        </form>
+        <div class="im-wrapper">
+            <div class="list text-center">
+                <div ng-repeat="schedule in vm.schedules" class="list card stable-bg">
+                    <div class="item item-body">
+                        <strong>
+                            {{schedule.timestamp.format("DD/MM/YYYY HH:mm[h]")}}
+                        </strong>
+                        <p>{{schedule.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
