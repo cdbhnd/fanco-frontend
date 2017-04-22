@@ -4,7 +4,7 @@
         .controller('eventController', eventController);
 
     /**@ngInject */
-    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel, $filter, moment) {
+    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel, $filter, moment, $ionicActionSheet) {
         vm = this;
 
         //variables and properties
@@ -20,6 +20,7 @@
         //public method
         vm.sendNewEvent = sendNewEvent;
         vm.toggleAllEvents = toggleAllEvents;
+        vm.openActions = openActions;
 
         //////////////////////////////////
         /**Activate */
@@ -56,6 +57,22 @@
                 .then(function() {
                     $ionicScrollDelegate.scrollBottom();
                 });
+        }
+
+        function openActions(event) {
+            var hideSheet = $ionicActionSheet.show({
+                buttons: [],
+                destructiveText: 'Delete',
+                cancelText: 'Cancel',
+                cancel: function() {
+                    hideSheet();
+                },
+                destructiveButtonClicked: function() {
+                    eventService.removeEvent(event, user)
+                        .then(getAllEvents)
+                        .then(hideSheet);
+                }
+            });
         }
 
         function getAllEvents() {

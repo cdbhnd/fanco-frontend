@@ -4,7 +4,7 @@
         .controller('botListController', botListController);
 
     /**@ngInject */
-    function botListController($q, $localStorage, $state, botService, notificationsService, BotModel) {
+    function botListController($q, $localStorage, $state, botService, notificationsService, BotModel, $ionicActionSheet) {
         vm = this;
 
         //variables and properties
@@ -16,6 +16,7 @@
         //public method
         vm.addBot = addBot;
         vm.toggleAddBotForm = toggleAddBotForm;
+        vm.openActions = openActions;
 
         //////////////////////////////////
         /**Activate */
@@ -39,6 +40,22 @@
                             .then(getAllBots);
                     }
                 });
+        }
+
+        function openActions(bot) {
+            var hideSheet = $ionicActionSheet.show({
+                buttons: [],
+                destructiveText: 'Delete',
+                cancelText: 'Cancel',
+                cancel: function() {
+                    hideSheet();
+                },
+                destructiveButtonClicked: function() {
+                    botService.removeBot(bot, user)
+                        .then(getAllBots)
+                        .then(hideSheet);
+                }
+            });
         }
 
         function toggleAddBotForm() {

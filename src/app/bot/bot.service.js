@@ -12,6 +12,7 @@
         //public methods
         service.getAllBots = getAllBots;
         service.createBot = createBot;
+        service.removeBot = removeBot;
 
         //////////////////////////////////
 
@@ -28,6 +29,19 @@
                 })
                 .catch(function (error) {
                     return null;
+                });
+        }
+
+        function removeBot(bot, user) {
+            return fancoApi.http({
+                    method: config.httpMethods.DELETE,
+                    url: config.fancoAPI.BOTS.replace('{{organizationId}}', user.organizationId) + '/' + bot.id
+                })
+                .then(function (response) {
+                    return true;
+                })
+                .catch(function (error) {
+                    return false;
                 });
         }
 

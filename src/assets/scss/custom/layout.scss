@@ -11,4 +11,20 @@ body {
     .footer-container {
         background: $footer_background !important;
     }
+    .list {
+        .item {
+            .item-actions {
+                box-shadow: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding-right: 20px;
+            }
+        }
+        .item-avatar {
+            background-color: #f8f8f8;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
 }

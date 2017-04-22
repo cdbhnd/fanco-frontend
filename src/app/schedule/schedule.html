@@ -26,12 +26,14 @@
         </form>
         <div class="im-wrapper">
             <div class="list text-center">
-                <div ng-repeat="schedule in vm.schedules" class="list card stable-bg">
+                <div ng-repeat="schedule in vm.schedules | orderBy: 'timestamp'" class="list card stable-bg">
                     <div class="item item-body">
                         <strong>
                             {{schedule.timestamp.format("DD/MM/YYYY HH:mm[h]")}}
                         </strong>
                         <p>{{schedule.description}}</p>
+                        <button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(schedule)">
+                        </button>
                     </div>
                 </div>
             </div>
