@@ -16,7 +16,15 @@ $max_card_width: 600px;
 $login_background: url('/images/background-am.jpg') 50% 20%;
 $general_background: #f2cfce;
 $header_background: url('/images/header-am.jpg') 50% 0% / auto 100%;
+$footer_background: url('/images/header-am.jpg') 50% 0% / auto 100%;
 $positive_bg: #ab0508;
 $calm_bg: #ab0508;
 $calm_900_bg: #ab0508;
 $calm_100_bg: #ab0508;
+$form_background: #fff;
+
+.checkbox input:checked+.checkbox-icon:before,
+.checkbox input:checked:before {
+    background: #ab0508 !important;
+    border-color: #ab0508 !important;
+}
