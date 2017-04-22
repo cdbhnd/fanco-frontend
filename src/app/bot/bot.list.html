@@ -1,9 +1,9 @@
 <ion-view class="bots-page">
+    <div class="bar bar-subheader bar-stable text-center">
+        <strong class="title">Bots</strong>
+    </div>
+    <button ng-click="vm.toggleAddBotForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 50px;font-size: 34px;"></button>
     <ion-content>
-        <div class="bar bar-subheader bar-stable static text-center">
-            <strong class="title">Bots</strong>
-        </div>
-        <button ng-click="vm.toggleAddBotForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 10px;font-size: 34px;"></button>
         <form ng-show="vm.showAddBotForm" ng-submit="vm.addBot(addBotForm.$valid, vm.bot.service, vm.bot.token)" name="addBotForm" novalidate>
             <div class="im-wrapper">
                 <div class="list">
@@ -32,7 +32,7 @@
             </div>
         </form>
         <div class="im-wrapper">
-            <div class="list">
+            <div class="list text-center">
                 <a class="item item-avatar bot-item" ng-repeat="bot in vm.bots">
                     <img class="bot-avatar" ng-src="{{bot.avatar}}" alt-image="images/{{bot.service.toLowerCase()}}.png">
                     <h2 style="text-transform: uppercase;">{{bot.name}}</h2>
