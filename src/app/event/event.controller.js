@@ -4,7 +4,7 @@
         .controller('eventController', eventController);
 
     /**@ngInject */
-    function eventController($q, $localStorage, $ionicScrollDelegate, eventService, EventModel, $filter, moment) {
+    function eventController($q, $localStorage, $ionicScrollDelegate, $filter, eventService, EventModel, moment, loaderService) {
         vm = this;
 
         //variables and properties
@@ -24,17 +24,10 @@
         //////////////////////////////////
         /**Activate */
         (function () {
-            getAllEvents()
-                .then(function () {
-                    $ionicScrollDelegate.scrollBottom();
-                });
+            getAllEvents();
         })();
 
         //////////////////////////////////
-
-        function toggleAllEvents() {
-            vm.showAllEvents = !vm.showAllEvents;
-        }
 
         function sendNewEvent(message) {
             if (!message.content) {
@@ -53,12 +46,23 @@
             $ionicScrollDelegate.scrollBottom();
             return eventService.sendEvent(user, eventModel)
                 .then(getAllEvents)
-                .then(function() {
+                .then(function () {
                     $ionicScrollDelegate.scrollBottom();
                 });
         }
 
+        function toggleAllEvents() {
+            vm.showAllEvents = !vm.showAllEvents;
+        }
+
         function getAllEvents() {
+            startLoading()
+                .then(tryGetAllEvents)
+                .then(scrollBottom)
+                .finally(stopLoading);
+        }
+
+        function tryGetAllEvents() {
             return eventService.getAllEvents(user)
                 .then(function (response) {
                     response = $filter('orderBy')(response, 'timestamp', false);
@@ -69,6 +73,18 @@
                         vm.newestEvents = response;
                     }
                 });
+        }
+
+        function scrollBottom() {
+            return $ionicScrollDelegate.scrollBottom();
+        }
+
+        function startLoading() {
+            return loaderService.startLoading();
+        }
+
+        function stopLoading() {
+            return loaderService.stopLoading();
         }
     }
 })(window.angular);
