@@ -34,10 +34,10 @@
     </ion-content>
     <div class="bar bar-footer bar-calm-100">
         <div class="event-input">
-            <input type="text" placeholder="Write new message..." ng-model="vm.newEvent.content">
+            <input refocus type="text" placeholder="Write new message..." ng-model="vm.newEvent.content">
         </div>
         <div class="buttons buttons-right">
-            <button class="button button-calm-900 button-fab ion-paper-airplane" ng-click="vm.sendNewEvent(vm.newEvent)"></button>
+            <button class="button button-calm-900 button-fab ion-paper-airplane" type="button" ng-click="vm.sendNewEvent(vm.newEvent)"></button>
         </div>
     </div>
 </ion-view>
