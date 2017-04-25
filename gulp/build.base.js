@@ -41,11 +41,16 @@
 
     var _ENV_CONFIG = config.environmentsConfig[_ENV];
 
-    var _THEME = 'default';
+    var _THEME = 'index-default';
     var _TITLE = 'FanCo';
-    if (argv.atletika) {
-        _THEME = 'atletika';
-        _TITLE = 'FK Atletika';
+    if (argv.theme) {
+        var themeConfig = config.themes[argv.theme];
+
+        if (!themeConfig) {
+            themeConfig = config.themes['default'];
+        }
+        _THEME = themeConfig.file;
+        _TITLE = themeConfig.name;
     }
 
     // main gulp base task
@@ -171,7 +176,7 @@
     gulp.task('styles', function () {
         return gulp.src([
                 config.paths.ionic + '/css/ionic.css',
-                config.paths.src + '/assets/scss/index-' + _THEME + '.scss',
+                config.paths.src + '/assets/scss/' + _THEME + '.scss',
                 config.paths.src + '/assets/scss/index.scss'
             ])
             .pipe(sass().on('error', sass.logError))
