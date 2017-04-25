@@ -4,7 +4,7 @@
         .controller('botListController', botListController);
 
     /**@ngInject */
-    function botListController($q, $localStorage, $state, botService, notificationsService, BotModel, $ionicActionSheet) {
+    function botListController($q, $localStorage, $state, $ionicActionSheet, botService, notificationsService, BotModel, loaderService) {
         vm = this;
 
         //variables and properties
@@ -29,13 +29,32 @@
         function addBot(formIsValid, service, tokend) {
             if (!formIsValid) {
                 return;
+            } else {
+                startLoading()
+                    .then(createBot)
             }
+        }
+
+        function toggleAddBotForm() {
+            switchFormFlag()
+                .then(clearFormFields);
+        }
+
+        function getAllBots() {
+            startLoading()
+                .then(tryGetAllBots)
+                .finally(stopLoading);
+        }
+
+        function createBot() {
             return botService.createBot(user, vm.bot)
                 .then(function (response) {
                     if (!response) {
-                        notify('Something went wrong', 'error');
+                        stopLoading()
+                            .then(notify('Something went wrong', 'error'));
                     } else {
-                        notify('Bot created', 'success')
+                        stopLoading()
+                            .then(notify('Bot created', 'success'))
                             .then(toggleAddBotForm)
                             .then(getAllBots);
                     }
@@ -69,7 +88,7 @@
             }());
         }
 
-        function getAllBots() {
+        function tryGetAllBots() {
             return botService.getAllBots(user)
                 .then(function (response) {
                     if (!response) {
@@ -79,9 +98,9 @@
                 });
         }
 
-        function notify(msg, type) {
+        function switchFormFlag() {
             return $q.when(function () {
-                notificationsService.notify(msg, type);
+                vm.showAddBotForm = !vm.showAddBotForm;
             }());
         }
 
@@ -94,6 +113,18 @@
                     service: ''
                 };
             }());
+        }
+
+        function notify(msg, type) {
+            return notificationsService.notify(msg, type);
+        }
+
+        function startLoading() {
+            return loaderService.startLoading();
+        }
+
+        function stopLoading() {
+            return loaderService.stopLoading();
         }
     }
 })(window.angular);

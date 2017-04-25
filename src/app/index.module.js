@@ -12,7 +12,8 @@
             'fanco.notifications',
             'fanco.bot',
             'fanco.event',
-            'fanco.schedule'
+            'fanco.schedule',
+            'fanco.loader'
         ])
         .run(function ($rootScope, $state, $ionicPlatform, $window, authService) {
             $ionicPlatform.ready(function () {

@@ -1,0 +1,23 @@
+.fanco-notifications {
+    position: absolute;
+    z-index: 10000;
+}
+
+.alert {
+    position: fixed;
+    color: $alert_text;
+    padding: 10px;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    text-align: center;
+    border-radius: 5px;
+    &.alert-error {
+        background-color: $alert_background;
+        border: 1px solid $alert_border;
+    }
+    &.alert-success {
+        background-color: $blue_background;
+        border: 1px solid $blue_border;
+    }
+}
