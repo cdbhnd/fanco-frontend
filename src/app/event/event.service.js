@@ -12,6 +12,7 @@
         //public methods
         service.getAllEvents = getAllEvents;
         service.sendEvent = sendEvent;
+        service.removeEvent = removeEvent;
 
         //////////////////////////////////
 
@@ -28,6 +29,19 @@
                 })
                 .catch(function () {
                     return null;
+                });
+        }
+
+        function removeEvent(event, user) {
+            return fancoApi.http({
+                    method: config.httpMethods.DELETE,
+                    url: config.fancoAPI.EVENTS.replace('{{organizationId}}', user.organizationId) + '/' + event.id
+                })
+                .then(function (response) {
+                    return true;
+                })
+                .catch(function () {
+                    return false;
                 });
         }
 

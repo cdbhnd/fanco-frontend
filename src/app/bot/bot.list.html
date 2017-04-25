@@ -33,13 +33,15 @@
         </form>
         <div class="im-wrapper">
             <div class="list text-center">
-                <a class="item item-avatar bot-item" ng-repeat="bot in vm.bots">
+                <div class="item item-avatar bot-item" ng-repeat="bot in vm.bots">
                     <img class="bot-avatar" ng-src="{{bot.avatar}}" alt-image="images/{{bot.service.toLowerCase()}}.png">
                     <h2 style="text-transform: uppercase;">{{bot.name}}</h2>
                     <h3>{{bot.service}}</h3>
                     <p>{{bot.token}}</p>
                     <p>{{bot.subscribers.length}} follower(s)</p>
-                </a>
+                    <button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(bot)">
+                    </button>
+                </div>
             </div>
     </ion-content>
 </ion-view>

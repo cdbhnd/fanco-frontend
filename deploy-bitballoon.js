@@ -4,7 +4,7 @@ var options = { access_token: "181590276a280e9e130006fdfa62ac63f64db03a69e646598
 var client = bitballoon.createClient(options);
 var fs = require('fs');
 
-var siteName = 'fanco';
+var siteName = 'fkatletika';
 var deployDir = 'www';
 
 findSite(siteName)

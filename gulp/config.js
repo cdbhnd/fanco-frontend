@@ -30,4 +30,15 @@
         staging: { },
         test: { }     
     };
+
+    exports.themes = {
+        default: {
+            file: 'index-default',
+            name: 'FanCo'
+        },
+        atletika: {
+            file: 'index-atletika',
+            name: 'FK Atletika'
+        }
+    }
 }());

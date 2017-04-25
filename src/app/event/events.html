@@ -17,6 +17,8 @@
                             {{all.timestamp.format("DD/MM/YYYY HH:mm[h]")}}
                         </strong>
                         <p>{{all.content}}</p>
+                        <!--<button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(all)">
+                        </button>-->
                     </div>
                 </div>
                 <div ng-if="!vm.showAllEvents" ng-repeat="newest in vm.newestEvents" class="list card stable-bg">
@@ -27,12 +29,14 @@
                             {{newest.timestamp.format("DD/MM/YYYY HH:mm[h]")}}
                         </strong>
                         <p>{{newest.content}}</p>
+                        <!--<button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(newest)">
+                        </button>-->
                     </div>
                 </div>
             </div>
         </div>
     </ion-content>
-    <div class="bar bar-footer bar-calm-100">
+    <div class="bar bar-footer bar-calm-100 footer-container">
         <div class="event-input">
             <input refocus type="text" placeholder="Write new message..." ng-model="vm.newEvent.content">
         </div>

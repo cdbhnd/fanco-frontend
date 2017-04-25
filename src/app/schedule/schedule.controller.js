@@ -4,7 +4,7 @@
         .controller('scheduleController', scheduleController);
 
     /**@ngInject */
-    function scheduleController($q, $localStorage, $ionicScrollDelegate, moment, scheduleService, ScheduleModel, notificationsService, loaderService) {
+    function scheduleController($q, $localStorage, $ionicScrollDelegate, $ionicActionSheet, moment, scheduleService, ScheduleModel, notificationsService, loaderService) {
         vm = this;
 
         //variables and properties
@@ -17,6 +17,7 @@
         //public method
         vm.addSchedule = addSchedule;
         vm.toggleAddScheduleForm = toggleAddScheduleForm;
+        vm.openActions = openActions;
 
         //////////////////////////////////
         /**Activate */
@@ -25,6 +26,22 @@
         })();
 
         //////////////////////////////////
+
+        function openActions(schedule) {
+            var hideSheet = $ionicActionSheet.show({
+                buttons: [],
+                destructiveText: 'Delete',
+                cancelText: 'Cancel',
+                cancel: function() {
+                    hideSheet();
+                },
+                destructiveButtonClicked: function() {
+                    scheduleService.removeSchedule(schedule, user)
+                        .then(getAllSchedules)
+                        .then(hideSheet);
+                }
+            });
+        }
 
         function addSchedule(formIsValid) {
             if (!formIsValid) {

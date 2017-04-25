@@ -3,7 +3,7 @@
         <div class="log-in">
             <form ng-submit="vm.loginUser(loginForm.$valid, vm.user.email, vm.user.password)" name="loginForm" novalidate autocomplete="nope">
                 <div class="title">
-                    <h1>FanCo</h1>
+                    <h1><!-- @echo THEME.TITLE --></h1>
                 </div>
                 <div class="list">
                     <label class="item item-input" ng-class="{'invalid': !loginForm.emailField.$valid && loginForm.$submitted}">
@@ -14,7 +14,7 @@
                     </label>
                 </div>
                 <div class="submit-button">
-                    <button class="button button-block button-positive action" type="submit">Log In</button>
+                    <button class="button button-block button-positive" type="submit">Log In</button>
                 </div>
             </form>
         </div>

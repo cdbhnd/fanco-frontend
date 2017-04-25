@@ -10,6 +10,7 @@
         //public methods
         service.getAllSchedules = getAllSchedules;
         service.createSchedule = createSchedule;
+        service.removeSchedule = removeSchedule;
 
         //////////////////////////////////
 
@@ -36,6 +37,19 @@
                     data: schedule
                 })
                 .then(function () {
+                    return true;
+                })
+                .catch(function () {
+                    return false;
+                });
+        }
+
+        function removeSchedule(schedule, user) {
+            return fancoApi.http({
+                    method: config.httpMethods.DELETE,
+                    url: config.fancoAPI.SCHEDULES.replace('{{organizationId}}', user.organizationId) + '/' + schedule.id
+                })
+                .then(function (response) {
                     return true;
                 })
                 .catch(function () {
