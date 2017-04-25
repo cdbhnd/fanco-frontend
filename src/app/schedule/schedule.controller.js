@@ -4,7 +4,7 @@
         .controller('scheduleController', scheduleController);
 
     /**@ngInject */
-    function scheduleController($q, $localStorage, $ionicScrollDelegate, scheduleService, ScheduleModel, notificationsService, moment) {
+    function scheduleController($q, $localStorage, $ionicScrollDelegate, moment, scheduleService, ScheduleModel, notificationsService, loaderService) {
         vm = this;
 
         //variables and properties
@@ -21,7 +21,6 @@
         //////////////////////////////////
         /**Activate */
         (function () {
-            console.log(vm.newSchedule);
             getAllSchedules();
         })();
 
@@ -31,19 +30,9 @@
             if (!formIsValid) {
                 return;
             }
-            createTimestamp(vm.rawTimestamp)
-                .then(function () {
-                    return scheduleService.createSchedule(user, vm.newSchedule)
-                        .then(function (response) {
-                            if (!response) {
-                                notify('Something went wrong', 'error');
-                            } else {
-                                notify('Bot created', 'success')
-                                    .then(toggleAddScheduleForm)
-                                    .then(getAllSchedules);
-                            }
-                        });
-                });
+            startLoading()
+                .then(createTimestamp(vm.rawTimestamp))
+                .then(createSchedule);
         }
 
         function toggleAddScheduleForm() {
@@ -52,6 +41,27 @@
         }
 
         function getAllSchedules() {
+            startLoading()
+                .then(tryGetAllSchedules)
+                .finally(stopLoading);
+        }
+
+        function createSchedule() {
+            return scheduleService.createSchedule(user, vm.newSchedule)
+                .then(function (response) {
+                    if (!response) {
+                        stopLoading()
+                            .then(notify('Something went wrong', 'error'));
+                    } else {
+                        stopLoading()
+                            .then(notify('Schedule created', 'success'))
+                            .then(toggleAddScheduleForm)
+                            .then(getAllSchedules);
+                    }
+                });
+        }
+
+        function tryGetAllSchedules() {
             return scheduleService.getAllSchedules(user)
                 .then(function (response) {
                     if (!response) {
@@ -64,12 +74,6 @@
                         }
                     }
                 });
-        }
-
-        function notify(msg, type) {
-            return $q.when(function () {
-                notificationsService.notify(msg, type);
-            }());
         }
 
         function switchFormFlag() {
@@ -93,6 +97,18 @@
             return $q.when(function () {
                 vm.newSchedule.timestamp = raw.slice(4, 8) + '-' + raw.slice(2, 4) + '-' + raw.slice(0, 2) + 'T' + raw.slice(8, 10) + ':' + raw.slice(10, 12) + ':00Z';
             }());
+        }
+
+        function notify(msg, type) {
+            return notificationsService.notify(msg, type);
+        }
+
+        function startLoading() {
+            return loaderService.startLoading();
+        }
+
+        function stopLoading() {
+            return loaderService.stopLoading();
         }
     }
 })(window.angular);

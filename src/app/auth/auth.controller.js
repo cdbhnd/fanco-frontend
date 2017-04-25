@@ -3,7 +3,7 @@
         .module('fanco.auth')
         .controller('authController', authController);
     /**@ngInject */
-    function authController($rootScope, $state, $ionicViewSwitcher, authService, UserModel, notificationsService) {
+    function authController($rootScope, $state, $ionicViewSwitcher, authService, UserModel, notificationsService, loaderService) {
         var vm = this;
 
         //variables and properties
@@ -24,20 +24,17 @@
 
         function loginUser(formIsValid, email, pass) {
             if (formIsValid) {
-                return authService.login(email, pass)
-                    .then(function () {
-                        tryRedirectToNextState();
-                    })
-                    .catch(function (e) {
-                        if (e.status === 400 || e.status === 401) {
-                            notificationsService.notify('Wrong email and/or password', 'error');
-                        }
-
-                        if (e.status === 500) {
-                            notificationsService.notify('Sorry, something went wrong', 'error');
-                        }
-                    });
+                startLoading()
+                    .then(tryLoginUser(email, pass));
             }
+        }
+
+        function logoutUser() {
+            return authService.logout()
+                .then(function () {
+                    $ionicViewSwitcher.nextDirection('back');
+                    $state.go('login');
+                });
         }
 
         function ensureUserIsNotLoggedIn() {
@@ -53,24 +50,45 @@
                 });
         }
 
-        function logoutUser() {
-            return authService.logout()
+        function tryLoginUser(email, pass) {
+            return authService.login(email, pass)
                 .then(function () {
-                    $ionicViewSwitcher.nextDirection('back');
-                    $state.go('login');
+                    stopLoading()
+                        .then(tryRedirectToNextState);
+                })
+                .catch(function (e) {
+                    if (e.status === 400 || e.status === 401) {
+                        stopLoading()
+                            .then(notify('Wrong email and/or password', 'error'));
+                    } else {
+                        stopLoading()
+                            .then(notify('Sorry, something went wrong', 'error'));
+                    }
                 });
+        }
+
+        function tryRedirectToNextState() {
+            if ($state.params.goToState) {
+                $state.go($state.params.goToState, $state.params.goToParams);
+            } else {
+                $state.go('app.publish');
+            }
         }
 
         function resetJobsCache() {
             return jobsService.reset();
         }
 
-        function tryRedirectToNextState() {
-            if ($state.params.goToState) {
-                $state.go($state.params.goToState, $state.params.goToParams);
-                return;
-            }
-            $state.go('app.publish');
+        function startLoading() {
+            return loaderService.startLoading();
+        }
+
+        function stopLoading() {
+            return loaderService.stopLoading();
+        }
+
+        function notify(msg, type) {
+            return notificationsService.notify(msg, type);
         }
     }
 }(window.angular));
