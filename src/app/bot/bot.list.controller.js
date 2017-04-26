@@ -4,7 +4,7 @@
         .controller('botListController', botListController);
 
     /**@ngInject */
-    function botListController($q, $localStorage, $state, $ionicActionSheet, botService, notificationsService, BotModel, loaderService) {
+    function botListController($q, $localStorage, $state, $ionicActionSheet, botService, notificationsService, BotModel, loaderService, $ionicPopup, clipboard) {
         vm = this;
 
         //variables and properties
@@ -63,11 +63,19 @@
 
         function openActions(bot) {
             var hideSheet = $ionicActionSheet.show({
-                buttons: [],
+                buttons: [
+                    { text: 'Get Shareable Link', action: copyShareableLink }
+                ],
                 destructiveText: 'Delete',
                 cancelText: 'Cancel',
                 cancel: function() {
                     hideSheet();
+                },
+                buttonClicked: function(buttonIndex, buttonObj) {
+                    if (buttonObj.action) {
+                        buttonObj.action(bot);
+                    }
+                    return true;
                 },
                 destructiveButtonClicked: function() {
                     botService.removeBot(bot, user)
@@ -75,6 +83,16 @@
                         .then(hideSheet);
                 }
             });
+        }
+
+        function copyShareableLink(bot) {
+            clipboard.copy(bot.shareableLink)
+                .then(function() {
+                    $ionicPopup.alert({
+                        title: 'Shareable Link copied to the clipboard',
+                    });
+                })
+                .catch(function() {});
         }
 
         function toggleAddBotForm() {
