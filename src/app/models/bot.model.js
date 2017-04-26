@@ -13,6 +13,7 @@
             this.name = (data && data.name) ? data.name : '';
             this.avatar = (data && data.avatar) ? data.avatar : '';
             this.subscribers = (data && data.subscribers) ? data.subscribers : [];
+            this.shareableLInk = (data && data.shareableLInk) ? data.shareableLInk : '';
         }
         return botModel;
     }
