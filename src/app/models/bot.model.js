@@ -13,7 +13,9 @@
             this.name = (data && data.name) ? data.name : '';
             this.avatar = (data && data.avatar) ? data.avatar : '';
             this.subscribers = (data && data.subscribers) ? data.subscribers : [];
-            this.shareableLInk = (data && data.shareableLInk) ? data.shareableLInk : '';
+            this.shareableLink = (data && data.shareableLink) ? data.shareableLink : '';
+            this.webhook = (data && data.webhook) ? data.webhook : '';
+            this.verificationToken = (data && data.verificationToken) ? data.verificationToken : '';
         }
         return botModel;
     }

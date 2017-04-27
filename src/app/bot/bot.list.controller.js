@@ -65,10 +65,13 @@
         }
 
         function openActions(bot) {
+            var buttons = [{ text: 'Get Shareable Link', action: copyShareableLink }];
+            if (bot.service == 'fbmessenger') {
+                buttons.push({ text: 'Get Webhook', action: copyWebhook });
+                buttons.push({ text: 'Get Verification Token', action: copyVerificationToken });
+            }
             var hideSheet = $ionicActionSheet.show({
-                buttons: [
-                    { text: 'Get Shareable Link', action: copyShareableLink }
-                ],
+                buttons: buttons,
                 destructiveText: 'Delete',
                 cancelText: 'Cancel',
                 cancel: function() {
@@ -94,8 +97,25 @@
                     $ionicPopup.alert({
                         title: 'Shareable Link copied to the clipboard',
                     });
-                })
-                .catch(function() {});
+                });
+        }
+
+        function copyWebhook(bot) {
+            clipboard.copy(bot.webhook)
+                .then(function() {
+                    $ionicPopup.alert({
+                        title: 'Webhook copied to the clipboard, please paste it in your facebook App',
+                    });
+                });
+        }
+
+        function copyVerificationToken(bot) {
+            clipboard.copy(bot.verificationToken)
+                .then(function() {
+                    $ionicPopup.alert({
+                        title: 'Verification token copied to the clipboard, please paste it in your facebook App',
+                    });
+                });
         }
 
         function toggleAddBotForm() {
