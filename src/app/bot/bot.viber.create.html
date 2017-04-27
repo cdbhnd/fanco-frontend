@@ -1,0 +1,12 @@
+<label class="item item-input item-floating-label" ng-class="{'invalid-input': !addBotForm.tokenField.$valid && addBotForm.$submitted}">
+    <span class="input-label">Token</span>
+    <input placeholder="Token" highlight-color="energized" type="text" required name="tokenField" ng-model="vm.bot.token" autocomplete="off" autocapitalize="none"></input>
+</label>
+<label class="item item-input item-floating-label">
+    <span class="input-label">Bot name</span>
+    <input placeholder="Bot name" highlight-color="energized" type="text" ng-model="vm.bot.name" autocomplete="off" autocapitalize="none"></input>
+</label>
+<label class="item item-input item-floating-label">
+    <span class="input-label">Bot avatar link</span>
+    <input placeholder="Bot avatar link" highlight-color="energized" type="text" ng-model="vm.bot.avatar" autocomplete="off" autocapitalize="none"></input>
+</label>
