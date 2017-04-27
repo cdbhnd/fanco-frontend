@@ -21,7 +21,11 @@
         //////////////////////////////////
         /**Activate */
         (function () {
-            getAllBots();
+            getAllBots()
+                .then(function() {
+                    vm.bot.service = 'viber';
+                    console.dir(vm);
+                });
         })();
 
         //////////////////////////////////
@@ -41,7 +45,7 @@
         }
 
         function getAllBots() {
-            startLoading()
+            return startLoading()
                 .then(tryGetAllBots)
                 .finally(stopLoading);
         }
@@ -54,7 +58,6 @@
                             .then(notify('Something went wrong', 'error'));
                     } else {
                         stopLoading()
-                            .then(notify('Bot created', 'success'))
                             .then(toggleAddBotForm)
                             .then(getAllBots);
                     }
@@ -124,12 +127,9 @@
 
         function clearFormFields() {
             return $q.when(function () {
-                vm.bot = {
-                    token: '',
-                    name: '',
-                    avatar: '',
-                    service: ''
-                };
+                vm.bot.token = '';
+                vm.bot.name = '';
+                vm.bot.avatar = '';
             }());
         }
 
