@@ -39,6 +39,10 @@
         atletika: {
             file: 'index-atletika',
             name: 'FK Atletika'
+        },
+        jedinstvo: {
+            file: 'index-jedinstvo',
+            name: 'FK Jedinstvo (Ub)'
         }
     }
 }());
