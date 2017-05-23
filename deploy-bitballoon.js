@@ -4,7 +4,10 @@ var options = { access_token: "181590276a280e9e130006fdfa62ac63f64db03a69e646598
 var client = bitballoon.createClient(options);
 var fs = require('fs');
 
-var siteName = 'fkjedinstvo';
+var siteName = 'fanco';
+if (process.argv[2]) {
+  siteName = process.argv[2];
+}
 var deployDir = 'www';
 
 findSite(siteName)
