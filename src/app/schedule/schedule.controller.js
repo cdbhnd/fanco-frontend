@@ -112,7 +112,9 @@
 
         function createTimestamp(raw) {
             return $q.when(function () {
-                vm.newSchedule.timestamp = raw.slice(4, 8) + '-' + raw.slice(2, 4) + '-' + raw.slice(0, 2) + 'T' + raw.slice(8, 10) + ':' + raw.slice(10, 12) + ':00Z';
+                var hourSegment = parseInt(raw.slice(8, 10));
+                console.log(raw);
+                vm.newSchedule.timestamp = raw.slice(4, 8) + '-' + raw.slice(2, 4) + '-' + raw.slice(0, 2) + 'T' + (hourSegment - 2) + ':' + raw.slice(10, 12) + ':00Z';
             }());
         }
 
