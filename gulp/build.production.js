@@ -18,18 +18,13 @@
 
     // copy css from temp to dist folder, without mapping
     gulp.task('production-css', function() {
-        gulp.src(config.paths.tmp + '/v2/styles/stylesv2.css')
-            .pipe(gulp.dest(config.paths.dist + '/v2/styles'));
+        gulp.src(config.paths.tmp + '/styles/*')
+            .pipe(gulp.dest(config.paths.dist + '/styles'));
     });
 
     // copy application and library files from temp to dist folder, without mapping
     gulp.task('production-js', function() {
-        gulp.src(config.paths.tmp + '/v2/js/libraries.js')
-            .pipe(uglify())
-            .pipe(gulp.dest(config.paths.dist + '/v2/js'));
-
-        gulp.src(config.paths.tmp + '/v2/js/app.js')
-            .pipe(uglify())
-            .pipe(gulp.dest(config.paths.dist + '/v2/js'));
+        gulp.src(config.paths.tmp + '/js/*')
+            .pipe(gulp.dest(config.paths.dist + '/js'));
     });
 }(require));
