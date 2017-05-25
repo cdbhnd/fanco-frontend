@@ -53,7 +53,7 @@
     </div>
     <div ng-show="vm.eventMode == 'image'" class="bar bar-footer bar-calm-100 footer-container">
         <div class="event-input">
-            <input type="file" file-upload="vm.image" placeholder="Choose an photo...">
+            <input type="file" accept="image/*" file-upload="vm.image" placeholder="Choose an photo...">
         </div>
         <div class="buttons buttons-right">
             <button class="button button-calm-900 button-fab ion-paper-airplane" type="button" ng-click="vm.uploadImage()"></button>
