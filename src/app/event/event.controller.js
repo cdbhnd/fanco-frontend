@@ -50,7 +50,7 @@
             vm.newEvent.content = '';
             $ionicScrollDelegate.scrollBottom();
             return eventService.sendEvent(user, eventModel)
-                //.then(getAllEvents)
+                .then(tryGetAllEvents)
                 .then(function () {
                     $ionicScrollDelegate.scrollBottom();
                 });
@@ -64,7 +64,7 @@
             var formData = new FormData();
             formData.append('fileName', vm.image);
             return eventService.uploadImageEvent(user.organizationId, formData)
-                .then(getAllEvents)
+                .then(tryGetAllEvents)
                 .then(stopLoading)
                 .then(function () {
                     $ionicScrollDelegate.scrollBottom();

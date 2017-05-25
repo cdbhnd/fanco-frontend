@@ -21,7 +21,7 @@
                         </button>-->
                     </div>
                 </div>
-                <div ng-if="!vm.showAllEvents" ng-repeat="newest in vm.newestEvents" class="list card stable-bg">
+                <div ng-if="!vm.showAllEvents" ng-repeat="newest in vm.newestEvents" class="list card stable-bg" ng-class="{'image': newest.type == 'image'}">
                     <div class="item item-body" ng-class="{ 'not-sent': !newest.sent }">
                         <strong>
                             {{newest.postedBy}}
@@ -30,7 +30,7 @@
                         </strong>
                         <p ng-if="newest.type == 'message'">{{newest.content}}</p>
                         <p ng-if="newest.type == 'image'">
-                            <img ng-src="{{newest.content}}" />
+                            <img ng-src="{{newest.content}}" alt-image="/images/image-not-found.jpg" />
                         </p>
                         <!--<button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(newest)">
                         </button>-->

@@ -30,6 +30,14 @@
             text-align: -ms-center;
         }
     }
+    .list.card.image {
+        height: 400px;
+        img {
+            max-height: 300px;
+            display: block;
+            margin: auto;
+        }
+    }
 }
 
 .not-sent {
@@ -76,7 +84,7 @@
         font-size: 35px;
         color: #aaa;
         display: inline-block;
-        padding: 0 20px;
+        padding: 0 0 0 30px;
         cursor: pointer;
     }
     .icon.active {
@@ -94,10 +102,26 @@
     .event-input {
         width: 85%;
     }
+    .list.card.image {
+        height: 350px !important;
+        img {
+            max-height: 250px !important;
+            display: block;
+            margin: auto;
+        }
+    }
 }
 
 @media (max-width: 500px) {
     .event-input {
         width: 80%;
+    }
+    .list.card.image {
+        height: 280px !important;
+        img {
+            max-height: 200px !important;
+            display: block;
+            margin: auto;
+        }
     }
 }
