@@ -13,6 +13,7 @@
         service.getAllEvents = getAllEvents;
         service.sendEvent = sendEvent;
         service.removeEvent = removeEvent;
+        service.uploadImageEvent = uploadImageEvent;
 
         //////////////////////////////////
 
@@ -53,6 +54,22 @@
                         type: event.type,
                         content: event.content
                     }
+                })
+                .then(function () {
+                    return true;
+                })
+                .catch(function () {
+                    return false;
+                });
+        }
+
+        function uploadImageEvent(orgId, data) {
+            return fancoApi.http({
+                    method: config.httpMethods.POST,
+                    url: config.fancoAPI.IMAGES.replace('{{organizationId}}', orgId),
+                    headers: { 'Content-Type': undefined },
+                    transformRequest: angular.indentity,
+                    data: data
                 })
                 .then(function () {
                     return true;

@@ -21,14 +21,17 @@
                         </button>-->
                     </div>
                 </div>
-                <div ng-if="!vm.showAllEvents" ng-repeat="newest in vm.newestEvents" class="list card stable-bg">
+                <div ng-if="!vm.showAllEvents" ng-repeat="newest in vm.newestEvents" class="list card stable-bg" ng-class="{'image': newest.type == 'image'}">
                     <div class="item item-body" ng-class="{ 'not-sent': !newest.sent }">
                         <strong>
                             {{newest.postedBy}}
                             <br>
                             {{newest.timestamp.format("DD/MM/YYYY HH:mm[h]")}}
                         </strong>
-                        <p>{{newest.content}}</p>
+                        <p ng-if="newest.type == 'message'">{{newest.content}}</p>
+                        <p ng-if="newest.type == 'image'">
+                            <img ng-src="{{newest.content}}" alt-image="/images/image-not-found.jpg" />
+                        </p>
                         <!--<button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(newest)">
                         </button>-->
                     </div>
@@ -36,12 +39,24 @@
             </div>
         </div>
     </ion-content>
-    <div class="bar bar-footer bar-calm-100 footer-container">
+    <div class="event-type-switcher">
+        <span class="icon ion-android-textsms" ng-class="{ 'active': vm.eventMode == 'message' }" ng-click="vm.switchToMode('message')"></span>
+        <span class="icon ion-images" ng-class="{ 'active': vm.eventMode == 'image' }" ng-click="vm.switchToMode('image')"></span>
+    </div>
+    <div ng-show="vm.eventMode == 'message'" class="bar bar-footer bar-calm-100 footer-container">
         <div class="event-input">
             <input type="text" placeholder="Write new message..." ng-model="vm.newEvent.content">
         </div>
         <div class="buttons buttons-right">
             <button class="button button-calm-900 button-fab ion-paper-airplane" type="button" ng-click="vm.sendNewEvent(vm.newEvent)"></button>
+        </div>
+    </div>
+    <div ng-show="vm.eventMode == 'image'" class="bar bar-footer bar-calm-100 footer-container">
+        <div class="event-input">
+            <input type="file" file-upload="vm.image" placeholder="Choose an photo...">
+        </div>
+        <div class="buttons buttons-right">
+            <button class="button button-calm-900 button-fab ion-paper-airplane" type="button" ng-click="vm.uploadImage()"></button>
         </div>
     </div>
 </ion-view>

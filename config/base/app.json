@@ -4,6 +4,7 @@
         "LOGIN": "admin/login",
         "BOTS": "organization/{{organizationId}}/bots",
         "EVENTS": "organization/{{organizationId}}/events",
+        "IMAGES": "organization/{{organizationId}}/images",
         "SCHEDULES": "organization/{{organizationId}}/schedules"
     },
 
