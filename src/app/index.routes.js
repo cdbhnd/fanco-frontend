@@ -37,6 +37,13 @@
                     controller: 'scheduleController',
                     controllerAs: 'vm',
                     cache: false
+                })
+                .state('app.polls', {
+                    url: '/polls',
+                    templateUrl: 'app/poll/polls.html',
+                    controller: 'pollsController',
+                    controllerAs: 'vm',
+                    cache: false
                 });
             $urlRouterProvider.otherwise('/login');
         }]);

@@ -1,0 +1,23 @@
+<ion-view>
+    <div class="bar bar-subheader bar-stable text-center">
+        <strong class="title">Polls</strong>
+    </div>
+    <ion-content class="events-page">
+        <div class="im-wrapper">
+            <div class="list text-center">
+                <div ng-repeat="poll in vm.polls" class="list card stable-bg">
+                    <div class="item item-body">
+                        <strong>
+                            {{poll.pId}}
+                            <br>
+                            {{all.deadline.format("DD/MM/YYYY HH:mm[h]")}}
+                        </strong>
+                        <div ng-repeat="o in poll.options">
+                            <p>{{o.id}} {{o.name}} {{o.votes}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
