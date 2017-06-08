@@ -10,6 +10,7 @@
             this.options = (data && data.options) ? data.options : '';
             this.deadline = (data && data.deadline) ? moment(data.deadline) : null;
             this.active = (data && data.active) ? data.active : false;
+            this.name = (data && data.name) ? data.name : "";
         }
         return pollModel;
     }

@@ -1,6 +1,6 @@
 <ion-view>
     <div class="bar bar-subheader bar-stable text-center">
-        <strong class="title">Polls</strong>
+        <strong class="title">Glasanje</strong>
     </div>
     <ion-content class="events-page">
         <div class="im-wrapper">
@@ -8,12 +8,12 @@
                 <div ng-repeat="poll in vm.polls" class="list card stable-bg">
                     <div class="item item-body">
                         <strong>
-                            {{poll.pId}}
+                            <span class="uppercase">{{poll.name}}</span>
                             <br>
-                            {{all.deadline.format("DD/MM/YYYY HH:mm[h]")}}
+                            Traje do: {{poll.deadline.format("DD/MM/YYYY")}}
                         </strong>
-                        <div ng-repeat="o in poll.options">
-                            <p>{{o.id}} {{o.name}} {{o.votes}}</p>
+                        <div ng-repeat="o in poll.options | orderBy: '-votes' track by $index">
+                            <p>{{($index + 1)}}. {{o.name}}: <strong>{{o.votes}}</strong></p>
                         </div>
                     </div>
                 </div>
