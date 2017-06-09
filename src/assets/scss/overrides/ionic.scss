@@ -78,8 +78,8 @@ a { cursor: pointer; }
 .button-bar-positive.activated,
 .bar-positive.activated,
 .positive-border.activated {
-    background-color: #3F51B5;
-    color: #fff;
+    background-color: $positive_bg !important;
+    color: $positive_fg !important;
 }
 .positive-900-bg,
 .button-positive-900,
@@ -109,8 +109,8 @@ a { cursor: pointer; }
 .button-bar-positive-900.activated,
 .bar-positive-900.activated,
 .positive-900-border.activated {
-    background-color: #1A237E;
-    color: #fff;
+    background-color: $positive_900_bg !important;
+    color: $positive_900_fg !important;
 }
 .positive-100-bg,
 .button-positive-100,
@@ -140,8 +140,8 @@ a { cursor: pointer; }
 .button-bar-positive-100.activated,
 .bar-positive-100.activated,
 .positive-100-border.activated {
-    background-color: #C5CAE9;
-    color: #fff;
+    background-color: $positive_100_bg !important;
+    color: $positive_100_fg !important;
 }
 .calm-bg,
 .button-calm,
@@ -171,8 +171,8 @@ a { cursor: pointer; }
 .button-bar-calm.activated,
 .bar-calm.activated,
 .calm-border.activated {
-    background-color: #2196F3;
-    color: #fff;
+    background-color: $calm_bg !important;
+    color: $calm_fg !important;
 }
 .calm-900-bg,
 .button-calm-900,
@@ -202,8 +202,8 @@ a { cursor: pointer; }
 .button-bar-calm-900.activated,
 .bar-calm-900.activated,
 .calm-900-border.activated {
-    background-color: #0D47A1;
-    color: #fff;
+    background-color: $calm_900_bg !important;
+    color: $calm_900_fg !important;
 }
 .calm-100-bg,
 .button-calm-100,
@@ -233,8 +233,8 @@ a { cursor: pointer; }
 .button-bar-calm-100.activated,
 .bar-calm-100.activated,
 .calm-100-border.activated {
-    background-color: #BBDEFB;
-    color: #fff;
+    background-color: $calm_100_bg;
+    color: $calm_100_fg;
 }
 .royal-bg,
 .button-royal,

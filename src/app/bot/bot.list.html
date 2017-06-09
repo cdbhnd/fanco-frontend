@@ -1,35 +1,38 @@
-<ion-view>
-    <ion-content class="bots-page">
-        <div class="bar bar-subheader bar-stable static text-center">
-            <strong class="title">Bots</strong>
-        </div>
-        <button ng-click="vm.toggleAddBotForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 10px;font-size: 34px;"></button>
+<ion-view class="bots-page">
+    <div class="bar bar-subheader bar-stable text-center">
+        <strong class="title">Bots</strong>
+    </div>
+    <button ng-click="vm.toggleAddBotForm()" class="button button-fab button-positive ion-plus-round" style="position: absolute;right: 10px;top: 50px;font-size: 34px;"></button>
+    <ion-content>
         <form ng-show="vm.showAddBotForm" ng-submit="vm.addBot(addBotForm.$valid, vm.bot.service, vm.bot.token)" name="addBotForm" novalidate>
-            <div class="im-wrapper">
+            <div class="im-wrapper" >
                 <div class="list">
                     <label class="item item-input item-select">
                         <div class="input-label" ng-class="{'invalid-select': !addBotForm.tokenField.$valid && addBotForm.$submitted}">
                             Choose chat service:
                         </div>
                         <select required name="serviceField" ng-model="vm.bot.service">
-                            <option selected value="Viber">Viber</option>
+                            <option value="viber">Viber</option>
+                            <option value="fbmessenger">Facebook</option>
                         </select>
                     </label>
-                    <label class="item item-input item-floating-label" ng-class="{'invalid-input': !addBotForm.tokenField.$valid && addBotForm.$submitted}">
-                        <span class="input-label">Token</span>
-                        <input placeholder="Token" highlight-color="energized" type="text" required name="tokenField" ng-model="vm.bot.token" autocomplete="off" autocapitalize="none"></input>
-                    </label>
-                    <button class="button button-block button-calm ink" type="submit">Add Bot</button>
                 </div>
+               <div class="list" ng-include="'app/bot/bot.viber.create.html'" ng-show="vm.bot.service == 'viber'"></div>
+               <div class="list" ng-include="'app/bot/bot.facebook.create.html'" ng-show="vm.bot.service == 'fbmessenger'"></div>
+               <button class="button button-block button-calm ink" type="submit">Add Bot</button>
             </div>
         </form>
         <div class="im-wrapper">
-            <div class="list">
-                <a class="item item-avatar" ng-repeat="bot in vm.bots">
-                    <img src="images/{{bot.service.toLowerCase()}}.png">
-                    <h2>{{bot.service}}</h2>
+            <div class="list text-center">
+                <div class="item item-avatar bot-item" ng-repeat="bot in vm.bots">
+                    <img class="bot-avatar" ng-src="{{bot.avatar}}" alt-image="images/{{bot.service.toLowerCase()}}.png">
+                    <h2 style="text-transform: uppercase;">{{bot.name}}</h2>
+                    <h3>{{bot.service}}</h3>
                     <p>{{bot.token}}</p>
-                </a>
+                    <p>{{bot.subscribers.length}} follower(s)</p>
+                    <button class="button button-icon ion-android-more-vertical item-actions" ng-click="vm.openActions(bot)">
+                    </button>
+                </div>
             </div>
     </ion-content>
 </ion-view>

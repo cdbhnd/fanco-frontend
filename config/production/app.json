@@ -1,1 +1,5 @@
-{}
+{
+	"fancoAPI": {
+        "HOST": "https://fanco-production.herokuapp.com/"
+    }
+}

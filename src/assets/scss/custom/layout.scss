@@ -1,11 +1,36 @@
 body {
     font-family: 'Exo', sans-serif !important;
 
-    .bar.bar-header {
-        background: url('/images/background.jpg') 50% 20%;
+    .bar.bar-header.side-header {
+        background: $header_side_background !important;
         h2 {
             display: block;
             margin: auto;
         }
+    }
+    .bar.bar-header.main-header {
+        background: $header_background !important;
+    }
+    .footer-container {
+        background: $footer_background !important;
+    }
+    .list {
+        .item {
+            .item-actions {
+                box-shadow: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding-right: 20px;
+            }
+        }
+        .item-avatar {
+            background-color: #f8f8f8;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    .uppercase {
+        text-transform: uppercase !important;
     }
 }

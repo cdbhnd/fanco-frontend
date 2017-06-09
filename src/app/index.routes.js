@@ -7,23 +7,43 @@
                     url: '/login',
                     templateUrl: 'app/auth/auth.login.html',
                     controller: 'authController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    cache: false
                 })
                 .state('app', {
                     url: '/app',
                     templateUrl: 'app/side-menu/side-menu.html',
                     controller: 'sideMenuController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    cache: false
                 })
                 .state('app.publish', {
                     url: '/publish',
-                    templateUrl: 'app/publish/publish.html'
+                    templateUrl: 'app/event/events.html',
+                    controller: 'eventController',
+                    controllerAs: 'vm',
+                    cache: false
                 })
                 .state('app.bots', {
                     url: '/bots',
                     templateUrl: 'app/bot/bot.list.html',
                     controller: 'botListController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    cache: false
+                })
+                .state('app.schedule', {
+                    url: '/schedule',
+                    templateUrl: 'app/schedule/schedule.html',
+                    controller: 'scheduleController',
+                    controllerAs: 'vm',
+                    cache: false
+                })
+                .state('app.polls', {
+                    url: '/polls',
+                    templateUrl: 'app/poll/polls.html',
+                    controller: 'pollsController',
+                    controllerAs: 'vm',
+                    cache: false
                 });
             $urlRouterProvider.otherwise('/login');
         }]);

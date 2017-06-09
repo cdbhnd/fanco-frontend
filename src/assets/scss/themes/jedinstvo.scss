@@ -1,0 +1,41 @@
+$login_background: url('/images/jedinstvo-background.jpg') 50% 20%;
+$general_background: url('/images/background-list.jpg') 50% 40px/'initial';
+$header_background: url('/images/header-am.jpg') 50% 0% / auto 100%;
+$header_side_background: url('/images/jedinstvo-side-header.jpg') 50% 0% / auto 100%;
+$footer_background: url('/images/header-am.jpg') 50% 0% / auto 100%;
+$positive_bg: #a80303;
+$calm_bg: #a80303;
+$calm_900_bg: #a80303;
+$calm_100_bg: #a80303;
+$form_background: #fff;
+
+.checkbox input:checked+.checkbox-icon:before,
+.checkbox input:checked:before {
+    background: #a80303 !important;
+    border-color: #a80303 !important;
+}
+
+.log-in {
+    margin-top: 140px !important;
+    .title {
+        h1 {
+            color: #a80303 !important; 
+        }
+    }
+    .input-label {
+        color: #a80303 !important;
+    }
+}
+
+.bar.bar-header.side-header {
+    border-bottom: 2px solid #a80303;
+    h2 {
+        display: none !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .log-in {
+        margin-top: 60px !important;
+    }
+}

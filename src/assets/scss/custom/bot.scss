@@ -1,0 +1,31 @@
+.bots-page {
+    ion-content {
+        padding-top: 40px !important;
+    }
+    form {
+        background-color: #fff;
+        .invalid-input {
+            border-bottom: 1px solid #ff0000 !important;
+        }
+        .invalid-select {
+            color: #ff0000;
+        }
+    }
+    .list {
+        .item-avatar.bot-item {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+            max-width: $max_card_width;
+            margin-left: auto;
+            margin-right: auto;
+            .bot-avatar {
+                max-height: inherit;
+                max-width: inherit;
+                height: auto;
+                width: 70px;
+                top: 20px;
+            }
+        }
+    }
+    background: $general_background;
+    background-size: contain;
+}

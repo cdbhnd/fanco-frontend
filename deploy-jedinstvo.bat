@@ -1,0 +1,1 @@
+gulp --test --buildonly && node deploy-bitballoon

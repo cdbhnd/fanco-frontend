@@ -1,0 +1,23 @@
+<ion-view>
+    <div class="bar bar-subheader bar-stable text-center">
+        <strong class="title">Glasanje</strong>
+    </div>
+    <ion-content class="events-page">
+        <div class="im-wrapper">
+            <div class="list text-center">
+                <div ng-repeat="poll in vm.polls" class="list card stable-bg">
+                    <div class="item item-body">
+                        <strong>
+                            <span class="uppercase">{{poll.name}}</span>
+                            <br>
+                            Traje do: {{poll.deadline.format("DD/MM/YYYY")}}
+                        </strong>
+                        <div ng-repeat="o in poll.options | orderBy: '-votes' track by $index">
+                            <p>{{($index + 1)}}. {{o.name}}: <strong>{{o.votes}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
