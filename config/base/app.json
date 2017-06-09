@@ -5,7 +5,8 @@
         "BOTS": "organization/{{organizationId}}/bots",
         "EVENTS": "organization/{{organizationId}}/events",
         "IMAGES": "organization/{{organizationId}}/images",
-        "SCHEDULES": "organization/{{organizationId}}/schedules"
+        "SCHEDULES": "organization/{{organizationId}}/schedules",
+        "POLLS": "organization/{{organizationId}}/polls"
     },
 
     "httpMethods": {

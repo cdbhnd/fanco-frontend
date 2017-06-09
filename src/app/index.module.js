@@ -13,6 +13,7 @@
             'fanco.bot',
             'fanco.event',
             'fanco.schedule',
+            'fanco.poll',
             'fanco.loader'
         ])
         .run(function ($rootScope, $state, $ionicPlatform, $window, authService) {
